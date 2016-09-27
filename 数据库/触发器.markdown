@@ -1,0 +1,132 @@
+---
+tags: 数据库，触发器
+date: 2016-09-22 16:21
+status: public
+title: 触发器
+---
+
+# 触发器（trigger）
+    sql 1---->sql N 
+
+也就是一条SQL语句引起其他SQL语句的执行
+
+## 触发器四要素：
+- 监视地点：table
+- 监视事件:insert/update/delete
+- 触发时间:after/before 
+- 触发事件:insert/update/delete
+
+## 或者说：
+        监视谁
+		监视什么动作
+		触发时间
+		触发事件
+----
+
+    delimiter $      将$作为语句结束符
+    修改后，触发事件的SQL语句才不会冲突
+
+一个触发器的语法：
+```SQL
+delimiter $
+create trigger 触发器名称
+after/before
+insert/update/delete
+on 被监视的表明
+for each row    
+begin
+insert/update/delete；
+insert/update/delete；
+insert/update/delete；
+end$
+delimiter ;
+```
+- 查看已有trigger：
+` show triggers `
+- 删除已有trigger：
+` drop trigger triggerName `
+
+## 触发器中引用行变量
+- 如果是监视insert动作：用new引用插入的这行  用 “new.列名”  来引用新插入的某个数据
+- 如果是监视delete动作：用old引用删除的这行
+- 如果是监视update动作：用old引用改之前的那行，用new引用改后的那行
+
+------
+# 【例子一枚】
+一个库存表 goods 
+一个订单表 orders
+
+## 创建两张表
+```SQL
+CREATE TABLE `goods` (
+  `gid` int(11) NOT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `number` smallint(6) DEFAULT NULL,
+  PRIMARY KEY (`gid`)
+) 
+CREATE TABLE `orders` (
+  `oid` int(11) NOT NULL,
+  `gid` int(11) DEFAULT NULL,
+  `much` smallint(6) DEFAULT NULL,
+  PRIMARY KEY (`oid`),
+  KEY `gidref` (`gid`),
+  CONSTRAINT `gidref` FOREIGN KEY (`gid`) REFERENCES `goods` (`gid`)
+) 
+```
+##　对insert/uqdate/delete的监视和触发
+##【删除】当删除一个订单信息时，即退货时，要同时修改库存表
+```SQL
+create tigger deleteTigger
+after delete  on orders
+for each row
+begin
+	update goods set number=number+old.much where gid=old.gid;
+end;
+```
+
+## 【添加】//添加订单时，如果订单数量大于库存，则需要处理
+```SQL
+create tigger insertTigger
+before insert  on orders
+for each row
+begin
+	declare  gnum int;//在操作里面声明变量的方法
+	select number into gnum from goods where gid=new.gid;//将查询结果放在变量中的方法
+	if new.much > gnum  then
+		set new.much = gnum;//赋值的方法
+	end if;//如何使用if语句
+	update goods set number=number-new.much where gid=new.gid;
+end;
+```
+
+## 【更改】//同样的，如果更新订单时，数量大于库存，则需要处理
+```SQL
+create tigger updateTigger
+before update  on orders
+for each row
+begin
+	declare  gnum int;
+	select number into gnum from goods where gid=new.gid;
+	set gnum=gnum+old.much;
+	if new.much > gnum  then
+		set new.much = gnum;
+	end if;
+	update goods set number=number+old.much-new.much where gid=new.gid;
+end;
+```
+-----
+----
+----
+# for each row 的意义
+## Oracle中有两种触发器:
+ - 一种的行触发器
+ - 一种是语句触发器
+ 
+         for each row  行触发器  表明被监视的表的操作  影响每一行时  都触发触发器的操作
+        缺省的情况下默认的是语句触发器    无论影响了多少行，触发器都只执行一次
+
+# 【例子】
+	比如说，一个人，买个五种产品，用行触发器，分别修改五条库存的记录。
+	用语句触发器，添加一条发货通知
+
+# 【注意】MySQL不支持语句触发器，也就是说MySQL中触发器必须有for each row
