@@ -1,7 +1,7 @@
 # Site settings
-title: CrazyMonkey6762
-description: "A Share Place"
-url: "https://CrazyMonkey6762.github.io"
+title: Project Pages
+description: "An Integrated Scientific Blogging Template"
+url: "https://projectpages.github.io"
 
 
 
@@ -13,8 +13,8 @@ headercolor: "#FFFFFF"
 logo: /project-pages/img/logos/Project-Pages-New-Logo-Inverted.png
 
 # Tertiary Parameters
-github_username:  CrazyMonkey6762
-project_repository: CrazyMonkey6762.github.io
+github_username:  projectpages
+project_repository: project-pages
 disqus_shortname: project-pages
 g-analytics: UA-75881392-1
 altmetric: true
