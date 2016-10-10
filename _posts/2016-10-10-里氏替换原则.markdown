@@ -7,9 +7,9 @@ tags: 设计模式
 ---
 
 
-#第2章　里氏替换原则（Liskov Substitution Principle，LSP）
+# 第2章　里氏替换原则（Liskov Substitution Principle，LSP）
 
-##在面向对象的语言中
+## 在面向对象的语言中
 ### 继承它有如下优点：
 ```java
 - 代码共享，减少创建类的工作量，每个子类都拥有父类的方法和属性；
@@ -30,9 +30,9 @@ tags: 设计模式
 --------
 --------
 
-# 什么是里氏替换原则呢？
-## 它有两种定义：
-### 第一种定义，也是最正宗的定义：
+#  什么是里氏替换原则呢？
+##  它有两种定义：
+###  第一种定义，也是最正宗的定义：
 ```java
 If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T,the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.（如果对每一个类型为S的对象o1，都有类型为T的对象o2，使得以T定义的所有程序P在所有的对象o1都代换成o2时，程序P的行为没有发生变化，那么类型S是类型T的子类型。）
 ```
