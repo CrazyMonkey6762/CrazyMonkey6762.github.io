@@ -1,12 +1,12 @@
 ---
 layout: post
-tags: 设计模式，单一职责
-date: 2016-10-10 16:09:35
 title: 单一职责原则
-categories:
-- 2016
+date: 2016-10-10 16:09:35
+categories: 2016
+tags: 设计模式
 ---
 
+[TOC]
 
 
 # 第1章　单一职责原则（Single Responsibility Principle，SRP）
