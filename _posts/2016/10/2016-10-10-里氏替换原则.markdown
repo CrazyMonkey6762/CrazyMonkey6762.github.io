@@ -1,11 +1,13 @@
 ---
-tags: 设计模式，里氏替换原则
-title: 里氏替换原则
 layout: post
+title: 里氏替换原则
 date: 2016-10-10 16:09:35
-categories:
-- 2016
+categories: 2016
+tags: 设计模式
 ---
+
+[TOC]
+
 
 
 #第2章　里氏替换原则（Liskov Substitution Principle，LSP）
