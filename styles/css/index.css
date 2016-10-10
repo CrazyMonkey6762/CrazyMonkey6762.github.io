@@ -628,7 +628,6 @@ pre code {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
-  color: #414141;
 }
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11 {
   float: left;
@@ -6094,6 +6093,7 @@ h3 {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+    color: #414141;
 }
 html {
   font-size: 62.5%;
