@@ -3,8 +3,8 @@
 layout: post
 title: 单一职责原则
 date: 2016-10-10 16:09:35
-categories: 
-tags: 
+categories: 2016
+tags: 设计模式
 ---
 
 [TOC]
