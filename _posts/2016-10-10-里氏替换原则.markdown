@@ -6,11 +6,8 @@ categories: 设计模式
 tags: 设计模式
 ---
 
-
 * content
 {:toc}
-
-
 
 
 #第2章　里氏替换原则（Liskov Substitution Principle，LSP）
