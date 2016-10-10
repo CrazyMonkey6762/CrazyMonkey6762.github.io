@@ -1,17 +1,17 @@
 # Site settings
-title: Lorem Ipsum - Web Developer
-description: "A blog about lorem ipsum ..."
+title: A Share  Place
+description: "A blog about Share"
 baseurl:
-url: "http://victorvoid.github.io"
+url: "https://crazymonkey6762.github.io/"
 
 # User settings
-username: lorem ipsum
-user_title: Lorem Ipsum - FrontEnd
-email: lorem.lorem@ipsum.com
-twitter_username: loremipsum
-github_username:  loremipsum
-gplus_username:  loremipsum
-disqus_username: loremipsum
+username: Stone6762
+user_title: FanLaoShi
+email: Stone6762@qq.com
+twitter_username: Stone6762
+github_username:  crazymonkey6762
+gplus_username:  Stone6762
+disqus_username: Stone6762
 
 # Build settings
 markdown: kramdown
